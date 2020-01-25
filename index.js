@@ -13,6 +13,10 @@ router.get('/register', function(req, res){
     res.sendFile(path.join(__dirname+'/html/register.html'))
 });
 
+router.get('/login', function(req, res){
+    res.sendFile(path.join(__dirname+'/html/login.html'))
+});
+
 app.use('/', router)
 var server = app.listen(3000, function(){
 
