@@ -6,7 +6,11 @@ const router = express.Router();
 const PORT=8080;
 
 router.get('/', function(req, res){
-    res.sendFile(path.join(__dirname+'/index.html'))
+    res.sendFile(path.join(__dirname+'/html/index.html'))
+});
+
+router.get('/register', function(req, res){
+    res.sendFile(path.join(__dirname+'/html/register.html'))
 });
 
 app.use('/', router)
