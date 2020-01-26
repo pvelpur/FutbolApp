@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const path = require('path')
 const router = express.Router();
+const firebase = require('firebase/app')
+require("firebase/auth");
+
 
 const PORT=8080;
 
@@ -23,6 +26,15 @@ var server = app.listen(3000, function(){
 })
 
 console.log("Running at Port 3000")
+
+// firebase.auth().onAuthStateChanged(function(user){
+//         if(user){
+//          console.log("congrats")
+//         }
+//      else{
+//           window.alert("TRY AGAIN")
+//          }
+//      });
 
 // fs.readFile('./index.html', (err, html) => {
 //     if (err) throw err;

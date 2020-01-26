@@ -13,18 +13,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <title>Document</title>
 </head>
 <body>
     <h2><center>Register New User</center></h2>
     <div class="input-group">
            <input type="text" required placeholder="Enter name here"></input> 
-           <input type="text" required minlength="6" maxlength="15" placeholder="Enter username here"></input> 
-           <input type="text" required minlength="6" maxlength="15" placeholder="Enter password here"></input> 
-           <button onclick="submit">Submit</button>
+           <input id = "email" type="text" required minlength="6" placeholder="Enter email here"></input> 
+           <input id = "password" type="password" required minlength="6" maxlength="15" placeholder="Enter password here"></input> 
+           <button id = "submit" onclick="Register()">Submit</button>
 
 
      </div>
     
+     <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+
+<script>
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    //Firebase Config goes here
+  };
+
+  const res = firebase.initializeApp(firebaseConfig);
+
+  if(res){
+      console.log("success")
+  }
+
+</script>
+<script>
+    function Register(){
+      var email;
+      email = $('#email').val();
+      var password
+      password = $('#password').val();
+      console.log("email: " + email)
+      console.log("password: " + password)
+      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode + ": " + errorMessage)
+      })
+}
+</script>
+
 </body>
 </html>
